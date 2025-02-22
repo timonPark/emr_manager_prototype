@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:latest
+    container_name: redis_container
+    environment:
+      - REDIS_PASSWORD=redis20250222  # Redis 비밀번호 설정
+    ports:
+      - "6379:6379"
+    command: ["redis-server", "--requirepass", "redis20250222"]  # Redis에서 비밀번호 요구
+    networks:
+      - my_network
+
+  mongodb:
+    image: mongo:8.0  # MongoDB 8.0 버전 이미지
+    container_name: mongo_container
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin  # MongoDB admin ID
+      - MONGO_INITDB_ROOT_PASSWORD=mongo20250222  # MongoDB admin 비밀번호
+    ports:
+      - "27017:27017"
+    networks:
+      - my_network
+
+networks:
+  my_network:
+    driver: bridge
