@@ -1,5 +1,7 @@
-export const redisConfig = {
-  host: 'localhost',         // Redis 컨테이너 호스트 (Docker의 경우 localhost)
-  port: 6379,                // Redis 기본 포트
-  password: 'redis20250222', // Redis 비밀번호
-};
+import { ConfigService } from '@nestjs/config';
+
+export const redisConfig = (configService: ConfigService) => ({
+  host: configService.get<string>('REDIS_HOST', 'localhost'),  // 기본값은 'localhost'
+  port: configService.get<number>('REDIS_PORT', 6379),        // 기본값은 6379
+  password: configService.get<string>('REDIS_PASSWORD'),      // Redis 비밀번호
+});
