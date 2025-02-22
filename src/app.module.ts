@@ -8,6 +8,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { mongoDBConfig } from './config/db/mongodb';
 import { HealthModule } from './health/health.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { EmrApiLogModule } from './emr-api-log/emr-api-log.module';
+import { EmrGroupSnapshotModule } from './emr-group-snapshot/emr-group-snapshot.module';
 
 @Module({
   imports: [
@@ -19,7 +21,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       useFactory: mongoDBConfig,
       inject: [ConfigService],
     }),
-    RedisModule, EmrModule, EmrUserModule, HealthModule],
+    RedisModule, EmrModule, EmrUserModule, HealthModule, EmrApiLogModule, EmrGroupSnapshotModule],
   controllers: [AppController],
   providers: [AppService],
 })
