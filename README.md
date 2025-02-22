@@ -6,3 +6,9 @@ emr 차트사로부터 받은 정보를 저장하는 애플리케이션 프로�
 - NestJS: 8.0.0
 - MongoDB: 8.0
 - Redis: 7.4.2
+
+# mongodb & redis 환경생성
+```
+$ docker-compose -f docker/docker-compose.yml up -d
+
+```
