@@ -1,0 +1,29 @@
+POST http://localhost:3000/emr/list
+Content-Type: application/json
+
+{
+  "emrComCode": "A",
+  "ykiho": "738473",
+  "emrInfos": [
+    {
+      "name": "나환자",
+      "birthday": "19991111",
+      "gender": "M",
+      "phone": "821011112222",
+      "bloodSugar": 100,
+      "diastolicBloodPressure": 80,
+      "systolicBloodPressure": 120,
+      "implementationDate": "2025-02-22 09:20:22"
+    },
+    {
+      "name": "나환자",
+      "birthday": "19991111",
+      "gender": "M",
+      "phone": "821011112222",
+      "bloodSugar": 100,
+      "diastolicBloodPressure": 80,
+      "systolicBloodPressure": 120,
+      "implementationDate": "2025-02-22 09:20:22"
+    }
+  ]
+}
