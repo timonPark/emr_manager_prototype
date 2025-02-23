@@ -10,6 +10,8 @@ import { HealthModule } from './health/health.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { EmrApiLogModule } from './emr-api-log/emr-api-log.module';
 import { EmrGroupSnapshotModule } from './emr-group-snapshot/emr-group-snapshot.module';
+import { APP_INTERCEPTOR } from '@nestjs/core';
+import { ResponseFormatInterceptor } from './config/api/response-format.interceptor';
 
 @Module({
   imports: [
@@ -23,6 +25,9 @@ import { EmrGroupSnapshotModule } from './emr-group-snapshot/emr-group-snapshot.
     }),
     RedisModule, EmrModule, EmrUserModule, HealthModule, EmrApiLogModule, EmrGroupSnapshotModule],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService,     {
+    provide: APP_INTERCEPTOR,
+    useClass: ResponseFormatInterceptor,
+  },],
 })
 export class AppModule {}

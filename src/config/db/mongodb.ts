@@ -9,7 +9,7 @@ export const mongoDBConfig = async (configService: ConfigService): Promise<TypeO
   type: 'mongodb',
   host: configService.get<string>('MONGO_HOST', 'localhost'),      // 기본값은 localhost
   port: configService.get<number>('MONGO_PORT', 27017),            // 기본값은 27017
-  username: configService.get<string>('MONGO_USERNAME', ),   // 기본값은 admin
+  username: configService.get<string>('MONGO_USERNAME'),   // 기본값은 admin
   password: configService.get<string>('MONGO_PASSWORD'),           // 환경 변수에서 비밀번호 가져오기
   database: configService.get<string>('MONGO_DATABASE', 'emrDatabase'),  // 기본값은 emrDatabase
   authSource: configService.get<string>('MONGO_AUTH_SOURCE', 'admin'), // 기본값은 admin
