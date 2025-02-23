@@ -1,0 +1,17 @@
+POST http://localhost:3999/emr
+Content-Type: application/json
+
+{
+  "emrComCode": "A",
+  "ykiho": "3847392",
+  "emrInfo": {
+    "name": "나환자",
+    "birthday": "19991111",
+    "gender": "M",
+    "phone": "821011112222",
+    "bloodSugar": 101,
+    "diastolicBloodPressure": 81,
+    "systolicBloodPressure": 121,
+    "implementationDate": "2025-02-22 09:20:22"
+  }
+}

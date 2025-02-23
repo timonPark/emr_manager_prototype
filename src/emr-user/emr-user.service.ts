@@ -2,27 +2,19 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { EmrUser } from './entity/emr-user.entity';
 import { Repository } from 'typeorm';
+import { EmrUserRepository } from './emr-user.repository';
 
 @Injectable()
 export class EmrUserService {
   constructor(
-    @InjectRepository(EmrUser)
-    private emrUserRepository: Repository<EmrUser>,
+    private emrUserRepository:EmrUserRepository,
   ) {}
 
-  public findOneByEmrUserInfo = async (emrUser: EmrUser) => {
-    return await this.emrUserRepository.findOne({
-      where: {
-        name: emrUser.name,
-        birthday: emrUser.birthday,
-        gender: emrUser.gender,
-        phone: emrUser.phone,
-        ykiho: emrUser.ykiho,
-        emrComCode: emrUser.emrComCode,
-      },
-      order: {
-        createdTs: 'DESC'
-      }
-    })
+  public findOneByEmrUserInfo = async (emrUser: EmrUser): Promise<EmrUser> => {
+    return await this.emrUserRepository.findOneByEmrUserInfo(emrUser);
+  }
+
+  public saveEmrUser = async (emrUser: EmrUser): Promise<EmrUser> => {
+    return await this.emrUserRepository.createEmrUser(emrUser);
   }
 }
