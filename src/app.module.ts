@@ -36,6 +36,10 @@ import { RequestIdService } from './config/middlewares/request-id.service';
     WinstonLoggerService,
     {
       provide: APP_INTERCEPTOR,
+      useClass: WinstonLoggerService,
+    },
+    {
+      provide: APP_INTERCEPTOR,
       useClass: RequestLoggerInterceptor,
     },
     {
