@@ -5,12 +5,17 @@ const winstonLoggerOptions: LoggerOptions = {
   format: format.combine(
     format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
     format.printf(({ timestamp, level, message, requestId }) =>
-      `[${requestId}]: ${timestamp} ${level}: ${message}`
+      JSON.stringify({
+        timestamp,
+        level,
+        message,
+        requestId
+      })
     ),
   ),
   transports: [
     new transports.Console(),
-    new transports.File({ filename: 'logs/application.log' }),
+    new transports.File({ filename: '/var/logs/application/nestjs/application.log' }),
   ],
 };
 
