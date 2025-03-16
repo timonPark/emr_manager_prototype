@@ -15,7 +15,7 @@ export class ResponseLoggerInterceptor implements NestInterceptor {
         const responseBody = JSON.stringify(data); // 응답 본문
 
         // 응답 로그를 기록
-        this.loggerService.log(`Response sent - Status: ${statusCode} Body: ${responseBody}`);
+        this.loggerService.log(`${ JSON.stringify({transactionType: 'response', statusCode, responseBody}) }`);
       })
     );
   }
